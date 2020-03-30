@@ -23,3 +23,17 @@ To start with this, we need to simply add the library in the libs folder.
         android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
 ```
+### Add EarlyBlockTheAppReceiver
+Add Callback Receiver in the application tag
+```
+    <receiver android:name="kr.co.earlysoft.blocktheapp.EarlyBlockTheAppReceiver" >
+        <intent-filter>
+            <action android:name="kr.co.earlysoft.intent.action.ACTION_BLOCKTHEAPP" />
+        </intent-filter>
+    </receiver>
+```
+### Add EarlyLifeCycleService
+Add EarlyLifeCycleService in the application tag
+```
+    <service android:name="kr.co.earlysoft.blocktheapp.EarlyLifeCycleService" />
+```
