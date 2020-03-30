@@ -7,4 +7,4 @@ A library for blocking some apps or handling specific actions, by filtering the 
 - Filtering the package name and class name of current actitivy
 - Support BroadcastReceiver for callback
 - Support Handler for callback
-
+- ActivityLifecycleCallbacks
