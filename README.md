@@ -8,4 +8,5 @@ A library for blocking some apps or handling specific actions, by filtering the 
 - Support BroadcastReceiver for callback
 - Support Handler for callback
 - ActivityLifecycleCallbacks
-- Check Permisstion for android.permission.PACKAGE_USAGE_STATS(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) 
+- Check Permisstion for android.permission.PACKAGE_USAGE_STATS
+(android.os.Build.VERSION_CODES.KITKAT or higher) 
