@@ -44,6 +44,6 @@ register ActivityLifecycleCallbacks in **Application**
     @Override
     public void onCreate() {
         super.onCreate();
-        registerActivityLifecycleCallbacks(new EarlyActivityLifeCycleCallbacks(getApplicationContext()));
+        **registerActivityLifecycleCallbacks(new EarlyActivityLifeCycleCallbacks(getApplicationContext()));**
     }
 ```
