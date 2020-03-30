@@ -39,11 +39,40 @@ Add EarlyLifeCycleService in the application tag
 ```
 
 ## Build
+Check Manifest.permission.FOREGROUND_SERVICE in Build.VERSION_CODES.P or higher
+```
+ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+ ..........
+ }
+```
+
 register ActivityLifecycleCallbacks in **Application**
 ```
     @Override
     public void onCreate() {
         super.onCreate();
-        **registerActivityLifecycleCallbacks(new EarlyActivityLifeCycleCallbacks(getApplicationContext()));**
+        registerActivityLifecycleCallbacks(new EarlyActivityLifeCycleCallbacks(getApplicationContext()));
     }
 ```
+Handler Callback
+
+```
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        EarlyBlockTheApp.callbackHandler = mHandler;
+    }
+    
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == EarlyBlockTheApp.MESSAGE_BLOCKTHEAPP) {
+                Toast.makeText(getApplicationContext(), "callbackHandler:" + msg.obj.toString(), Toast.LENGTH_LONG).show();
+                EarlyBlockTheApp.instance().stopLifeCycleService(getApplicationContext());
+            }
+
+        }
+    };
+ ```
