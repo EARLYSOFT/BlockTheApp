@@ -37,3 +37,13 @@ Add EarlyLifeCycleService in the application tag
 ```
     <service android:name="kr.co.earlysoft.blocktheapp.EarlyLifeCycleService" />
 ```
+
+## Build
+register ActivityLifecycleCallbacks in **Application**
+```
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        registerActivityLifecycleCallbacks(new EarlyActivityLifeCycleCallbacks(getApplicationContext()));
+    }
+```
