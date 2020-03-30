@@ -76,3 +76,35 @@ Handler Callback
         }
     };
  ```
+ 
+EarlyBlockTheAppReceiver Callback
+ ```
+    private EarlyBlockTheAppReceiver mBroadcastReceiver;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+     
+        mBroadcastReceiver = new EarlyBlockTheAppReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Toast.makeText(context, "EarlyBlockTheAppReceiver:" + intent.getStringExtra(EarlyBlockTheApp.EXTRA_PACKAGENAME),                         Toast.LENGTH_LONG).show();
+            }
+        };
+    }
+    
+     @Override
+    protected void onStart() {
+        super.onStart();
+        LocalBroadcastManager.getInstance(this).registerReceiver((mBroadcastReceiver),
+                new IntentFilter(EarlyBlockTheApp.ACTION_EARLY_BLOCKTHEAPP)
+        );
+    }
+
+    @Override
+    protected void onStop() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver);
+        super.onStop();
+    }
+ ```
