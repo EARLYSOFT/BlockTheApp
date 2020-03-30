@@ -16,10 +16,10 @@ To start with this, we need to simply add the library in the libs folder.
 
 ## Setting up the AndroidManifest.xml
 ### Add Permissions
-'''
+```
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission
         android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
-'''
+```
